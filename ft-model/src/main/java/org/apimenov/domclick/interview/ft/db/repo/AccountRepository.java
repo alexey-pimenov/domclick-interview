@@ -19,7 +19,7 @@ public interface AccountRepository extends SequenceModelRepository<Account> {
   void updateBalance(@Param("account") Account account, @Param("amount") BigDecimal balance);
 
   @Lock(LockModeType.PESSIMISTIC_WRITE)
-  @Query("select acc from Account acc where acc.id in :ids")
-  List<Account> selectForUpdate(@Param("ids") List<Long> ids);
+  @Query("select acc from Account acc where acc.id = :id")
+  Account selectForUpdate(@Param("id") Long ids);
 
 }

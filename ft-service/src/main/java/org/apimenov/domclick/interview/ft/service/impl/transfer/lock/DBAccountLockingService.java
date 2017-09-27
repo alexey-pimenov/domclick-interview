@@ -1,7 +1,6 @@
 package org.apimenov.domclick.interview.ft.service.impl.transfer.lock;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import org.apimenov.domclick.interview.ft.db.domain.entity.Account;
 import org.apimenov.domclick.interview.ft.db.domain.entity.SequenceModel;
 import org.apimenov.domclick.interview.ft.db.repo.AccountRepository;
@@ -23,15 +22,15 @@ public class DBAccountLockingService implements AccountLockingService {
   @Override
   @Transactional(propagation = Propagation.MANDATORY)
   public void lock(List<Account> accounts) {
-    List<Long> ids = accounts.stream()
+    accounts.stream()
         .map(SequenceModel::getId).sorted()
-        .collect(Collectors.toList());
-    repository.selectForUpdate(ids);
+        .forEach(repository::selectForUpdate);
+
 
   }
 
   @Override
   public void release(List<Account> accounts) {
-
+    //Released automatically with rollback/commit
   }
 }

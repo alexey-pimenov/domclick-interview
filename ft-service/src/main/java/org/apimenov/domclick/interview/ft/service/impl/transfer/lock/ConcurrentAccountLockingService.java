@@ -3,7 +3,6 @@ package org.apimenov.domclick.interview.ft.service.impl.transfer.lock;
 import com.google.common.util.concurrent.Striped;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
-import java.util.stream.Collectors;
 import org.apimenov.domclick.interview.ft.db.domain.entity.Account;
 import org.apimenov.domclick.interview.ft.db.domain.entity.SequenceModel;
 import org.apimenov.domclick.interview.ft.service.AccountLockingService;
@@ -15,25 +14,18 @@ public class ConcurrentAccountLockingService implements AccountLockingService {
 
   @Override
   public void lock(List<Account> accounts) {
-
-    List<Long> ids = accounts.stream()
+    accounts.stream()
         .map(SequenceModel::getId).sorted()
-        .collect(Collectors.toList());
+        .forEachOrdered(id -> locks.get(id).lock());
 
-    ids.stream()
-        .map(id -> locks.get(id))
-        .forEachOrdered(Lock::lock);
 
   }
 
   @Override
   public void release(List<Account> accounts) {
-    List<Long> ids = accounts.stream()
+    accounts.stream()
         .map(SequenceModel::getId).sorted()
-        .collect(Collectors.toList());
-    ids.stream()
-        .map(id -> locks.get(id))
-        .forEachOrdered(Lock::unlock);
+        .forEachOrdered(id -> locks.get(id).unlock());
 
   }
 }
