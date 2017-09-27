@@ -62,11 +62,7 @@ public class UserTransactionExecutor {
 
     lockingService.lock(accounts);
 
-    try {
-      Thread.sleep(60000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
+
     try {
       for (Transaction tr : transactions) {
         if (tr.getAccount().getBalance().add(tr.getAmount()).compareTo(BigDecimal.ZERO) < 0) {
