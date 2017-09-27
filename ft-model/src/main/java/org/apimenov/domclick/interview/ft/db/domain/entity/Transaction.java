@@ -30,9 +30,6 @@ public class Transaction extends SequenceModel {
   private Account account;
 
 
-  private Account creditAccount;
-
-
   @Enumerated(EnumType.STRING)
   private TransactionStatus status;
 
