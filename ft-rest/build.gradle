@@ -1,10 +1,11 @@
+apply plugin: "org.springframework.boot"
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web:${versions.springBoot}"
     compile "org.springframework.boot:spring-boot-starter-actuator:${versions.springBoot}"
     compile group: 'org.modelmapper', name: 'modelmapper', version: '1.1.0'
 
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${versions.jackson}"
-    compile "com.fasterxml.jackson.datatype: jackson-datatype-jdk8:${versions.jackson}"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${versions.jackson}"
 
 
 
