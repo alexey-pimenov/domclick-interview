@@ -1,0 +1,24 @@
+#Gradle ignores
+.gradle
+build/
+
+#IDEA project files and artifacts
+.idea
+*.iml
+out
+classes
+
+#Artifacts
+
+*.class
+*.war
+*.jar
+
+## git merge files
+*.orig
+
+!gradle/wrapper/gradle-wrapper.jar
+gradle-local.properties
+
+
+

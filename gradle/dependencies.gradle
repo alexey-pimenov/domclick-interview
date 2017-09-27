@@ -1,0 +1,9 @@
+ext {
+    versions = [:]
+    lib = [:]
+}
+
+
+versions.springBoot = "1.5.7.RELEASE"
+versions.hibernate = "5.1.10.Final"
+versions.jackson = "2.8.10"
