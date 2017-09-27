@@ -1,0 +1,17 @@
+[
+  {
+    "fullName": "Василий Васильевич",
+    "login": "vasya",
+    "id": 1
+  },
+  {
+    "fullName": "Петр Петровчи",
+    "login": "petya",
+    "id": 2
+  },
+  {
+    "fullName": "Иван Иванович",
+    "login": "ivan",
+    "id": 3
+  }
+]
